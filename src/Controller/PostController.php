@@ -35,4 +35,32 @@ class PostController extends AbstractController
             'posts' => $content,
         ]);
     }
+
+    /**
+     * @Route("/post/show/{id}", name="post_show")
+     * @param int $id
+     * @param HttpClientInterface $httpClient
+     * @return Response
+     * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     */
+    public function show(int $id, HttpClientInterface $httpClient)
+    {
+        $response = $httpClient->request('GET', 'https://jsonplaceholder.typicode.com/posts/' . $id);
+        $statusCode = $response->getStatusCode();
+
+        if (Response::HTTP_OK !== (int)$statusCode) {
+            $content = [];
+        } else {
+            $content = $response->getContent();
+            $content = $response->toArray();
+        }
+
+        return $this->render('post/show.html.twig', [
+            'post' => $content,
+        ]);
+    }
 }
