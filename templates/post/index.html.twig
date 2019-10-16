@@ -3,12 +3,26 @@
 {% block title %}Hello PostController!{% endblock %}
 
 {% block body %}
-    <ul>
-        {% for post in posts %}
-            <li><a href="{{ path('post_show', {'id' : post.id }) }}">{{ post.title }}</a></li>
-        {% else %}
-            <li>Pas de Posts</li>
-        {% endfor %}
-    </ul>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h1>Mes supers articles</h1>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            {% for post in posts %}
+                                <li>
+                                    <a href="{{ path('app_post_show', {'id' : post.id }) }}">{{ post.title }}</a>
+                                </li>
+                            {% else %}
+                                <li>Pas de Posts</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,0 +1,6 @@
+// Override primary color
+$theme-colors: (
+  "primary": orange,
+) !default;
+
+@import "~bootstrap/scss/bootstrap";

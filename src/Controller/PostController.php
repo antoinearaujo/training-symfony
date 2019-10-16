@@ -10,16 +10,16 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/post", name="post")
+     * @Route("/post", name="app_post")
      * @param HttpClientInterface $httpClient
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
-    public function index(HttpClientInterface $httpClient)
+    public function index(HttpClientInterface $httpClient): Response
     {
         $response = $httpClient->request('GET', 'https://jsonplaceholder.typicode.com/posts');
         $statusCode = $response->getStatusCode();
@@ -37,7 +37,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/post/show/{id}", name="post_show")
+     * @Route("/post/show/{id}", name="app_post_show")
      * @param int $id
      * @param HttpClientInterface $httpClient
      * @return Response
@@ -47,7 +47,7 @@ class PostController extends AbstractController
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
-    public function show(int $id, HttpClientInterface $httpClient)
+    public function show(int $id, HttpClientInterface $httpClient): Response
     {
         $response = $httpClient->request('GET', 'https://jsonplaceholder.typicode.com/posts/' . $id);
         $statusCode = $response->getStatusCode();

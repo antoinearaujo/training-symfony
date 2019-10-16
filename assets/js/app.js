@@ -1,5 +1,16 @@
 // assets/js/app.js
 
-require('../css/app.css');
+import '../scss/app.scss'
 
-console.log('Hello Webpack Encore');
+// Bootstrap 4
+import 'bootstrap';
+
+// Font Awesome
+import '@fortawesome/fontawesome-free/js/fontawesome'
+import '@fortawesome/fontawesome-free/js/solid'
+import '@fortawesome/fontawesome-free/js/regular'
+import '@fortawesome/fontawesome-free/js/brands'
+
+import './pages/post.js'
+
+console.log('Hello Webpack Encore')

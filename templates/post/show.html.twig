@@ -3,8 +3,19 @@
 {% block title %}Hello PostController!{% endblock %}
 
 {% block body %}
-    <div>
-        <h1>{{ post.title }}</h1>
-        <div> {{ post.body }}</div>
+    <div class="container-fluid">
+        <div class="col-8 offset-2">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    <h1>{{ post.title }}</h1>
+                </div>
+                <div class="card-body">
+                    {{ post.body }}
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('app_post') }}"><i class="fas fa-arrow-alt-circle-left"></i> Retour</a>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
