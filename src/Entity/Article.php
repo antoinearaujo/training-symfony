@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -76,4 +78,21 @@ class Article
     {
         return $this->title;
      }
+
+    /**
+     * @Assert\Callback()
+     * @param $object
+     * @param ExecutionContextInterface $context
+     * @param $payload
+     */
+    public static function validate($object, ExecutionContextInterface $context, $payload)
+    {
+        /** @var $object Article */
+        if ($object->getTitle() !== 'toto') {
+            $context->buildViolation('This name sounds totally fake!')
+                ->atPath('content')
+                ->addViolation()
+            ;
+        }
+    }
 }
