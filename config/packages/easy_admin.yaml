@@ -1,0 +1,25 @@
+# config/packages/easy_admin.yaml
+easy_admin:
+  site_name: 'Axome corp'
+  design:
+    brand_color: '#1ABC9C'
+    assets:
+      css:
+        - 'build/app.css'
+  entities:
+    Article:
+      class: App\Entity\Article
+      list:
+        title: "Mes super articles"
+        max_results: 55
+        sort: 'title'
+        fields:
+          - { property: 'id', label: 'ID' }
+          - { property: 'title', label: 'Titre' }
+          - { property: 'content', label: 'Contenu' }
+          - { property: 'category', label: 'Categorie' }
+          - { property: 'enabled', label: 'Actif', type: 'toggle' }
+      edit:
+        title: "Modifier mon super article"
+    Category:
+      class: App\Entity\Category
