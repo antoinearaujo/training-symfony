@@ -34,6 +34,11 @@ class Article
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $enabled;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,5 +108,12 @@ class Article
     public function getEnabled(): bool
     {
         return true;
+    }
+
+    public function setEnabled(?bool $enabled): self
+    {
+        $this->enabled = $enabled;
+
+        return $this;
     }
 }

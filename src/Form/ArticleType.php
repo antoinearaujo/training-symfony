@@ -16,6 +16,7 @@ class ArticleType extends AbstractType
             ->add('title',TextType::class, ['required' => true])
             ->add('content')
             ->add('category')
+            ->add('enabled')
         ;
     }
 
