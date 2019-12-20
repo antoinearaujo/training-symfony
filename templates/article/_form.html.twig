@@ -1,3 +1,5 @@
+{% form_theme form with ['bootstrap_4_horizontal_layout.html.twig','form/custom_fields.html.twig'] %}
+
 <div class="container">
     <div class="form-group">
 
@@ -6,10 +8,13 @@
             {{ form_row(form.category, {'attr': {'class': 'form-control'}}) }}
         </div>
         <div class="col" id="some-custom-id2">
-            {{ form_row(form.title, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.title) }}
         </div>
         <div class="col" id="some-custom-id3">
             {{ form_row(form.content, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col" id="some-custom-id3">
+            {{ form_row(form.enabled, {'attr': {'class': 'form-control'}}) }}
         </div>
         <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
         {{ form_end(form) }}

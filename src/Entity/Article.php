@@ -94,12 +94,12 @@ class Article
     public static function validate($object, ExecutionContextInterface $context, $payload)
     {
         /** @var $object Article */
-        if ($object->getTitle() !== 'toto') {
-            $context->buildViolation('This name sounds totally fake!')
-                ->atPath('content')
-                ->addViolation()
-            ;
-        }
+//        if ($object->getTitle() !== 'toto') {
+//            $context->buildViolation('This name sounds totally fake!')
+//                ->atPath('content')
+//                ->addViolation()
+//            ;
+//        }
     }
 
     /**
